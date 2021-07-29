@@ -12,11 +12,9 @@ appApy = FastAPI(title="FastApi example",
                 description="una pequeña prueba con el framework de FaztApi",
                 version="1.0.0")
 
-
 class Items(BaseModel ):
     name : str
     price : float
-
 
 #routes
 
@@ -34,6 +32,7 @@ async def shutdown_event():
     if not connection.is_closed():
         connection.close()    
 
+@appApy.get("/")
 @appApy.get("/api")
 async def index():
     return {"welcome ":"FastApi"}
@@ -48,5 +47,8 @@ async def read_item(item_id: int, q: Optional[str] = None):
 async def update_item(item_id : int , item : Items):
     return {"item_name": item.name  , "items_id" : item_id }
 
+@appApy.get('/products')
+async def getProductos():
 
- 
+    pass
+    return {"productos":"una nueva de productos"}

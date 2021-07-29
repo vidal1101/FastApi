@@ -1,6 +1,6 @@
 from peewee  import *
 
-Database = MySQLDatabase('peliculas' ,
+Database = MySQLDatabase('peliculas',
                         user='root',
                         password='Runo1101',
                         host='localhost')
