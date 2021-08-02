@@ -4,10 +4,12 @@ from fastapi import  FastAPI
 from pydantic import BaseModel
 from typing import Optional
 
-from .APY.inicio import router
+from APY.inicio import main as inicioMain
 
 from APY.database import Database as connection
 from APY.database import User
+
+
 
 #declaracion de objeto de la clase FaztApi
 appApy = FastAPI(title="FastApi example",
@@ -15,7 +17,7 @@ appApy = FastAPI(title="FastApi example",
                 version="1.0.0")
 
 
-appApy.include_router(router.route)
+appApy.include_router(inicioMain.router)
 
 class Items(BaseModel ):
     name : str
