@@ -1,14 +1,14 @@
 # implementaciones para trabajar con fastapi
-
 from fastapi import  FastAPI
 from pydantic import BaseModel
 from typing import Optional
 
-from APY.inicio import main as inicioMain
+# importacion de la estructura de la api
+from APi.inicio import main as inicioMain
+from APi.gets import mainGet as mainGet
 
-from APY.database import Database as connection
-from APY.database import User
-
+from APi.database import Database as connection
+from APi.database import User
 
 
 #declaracion de objeto de la clase FaztApi
@@ -16,8 +16,10 @@ appApy = FastAPI(title="FastApi example",
                 description="una pequeña prueba con el framework de FaztApi",
                 version="1.0.0")
 
-
+#inclur la ruta al objeto de fastapi
 appApy.include_router(inicioMain.router)
+appApy.include_router(mainGet.routerGet)
+
 
 class Items(BaseModel ):
     name : str
